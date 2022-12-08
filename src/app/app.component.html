@@ -1,0 +1,59 @@
+<div class="wrapper">
+
+  <div class="header">
+
+    <!-- <div class="in-header">
+
+      icon
+
+    </div> -->
+
+    <div class="title">
+      Reconocimiento Facial
+    </div>
+
+    <!-- <div>
+      <a href="https//github.com/leifermendez">
+        icon
+      </a>
+    </div> -->
+
+  </div>
+
+  <div class="block-main">
+
+    <div id="cam">
+
+      <app-video-player [width]="dimensionsVideo.width" [height]="dimensionsVideo.height" [stream]="this.currentStream"></app-video-player>
+
+    </div>
+
+    <div class="sidebar">
+
+      <div class="zone-body">
+
+        <div class="block">
+          block 1
+        </div>
+
+        <div class="block">
+          block 2
+        </div>
+      </div>
+
+      <div class="zone-btn">
+        <ul class="list-btn">
+          <li *ngFor="let btn of [1,1,1]" >
+            icon
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+
+  
+
+</div>
+
