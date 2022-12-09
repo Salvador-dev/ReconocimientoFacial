@@ -1,0 +1,7 @@
+
+-Instalar paquetes necesarios("npm install paquete"): 
+    - face-api.js (libreria para reconocimiento facial)
+    - @types/webgl2 (trabaja con el face api)
+    - core-js ()
+    - fs-web (soluciona algunos errores, modificaciones en tsconfig.app.json)
+    - lodash (soluciona algunos errores, modificaciones en angular.json)

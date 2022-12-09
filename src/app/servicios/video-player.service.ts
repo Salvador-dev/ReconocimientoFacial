@@ -1,11 +1,14 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { FaceApiService } from './face-api.service';
+import * as _ from 'lodash';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class VideoPlayerService {
+
+  cbAi: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private faceApiService: FaceApiService) { 
 
@@ -23,23 +26,27 @@ export class VideoPlayerService {
     const landmark = detectionFaces[0].landmarks || null;
     const expressions = detectionFaces[0].expressions || null;
 
+    const eyeLeft = landmark.getLeftEye();
+    const eyeRight = landmark.getRightEye();
+
+    const eyes = {
+
+      left: [_.head(eyeLeft), _.last(eyeLeft)],
+      right: [_.head(eyeRight), _.last(eyeRight)]
+
+    };
 
     const resizedDetections = globalFace.resizeResults(detectionFaces, displaySize);
 
-    //canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
-        
-    //     // Se guarda en un array los resultados de las coincidencias entre los rostros guardados y los que se estan registrando en camara
-    //     const results = resizedDetections.map((d) => {
-    //         return faceMatcher.findBestMatch(d.descriptor)
-    //     });
+    this.cbAi.emit({
+      resizedDetections,
+      displaySize,
+      expressions,
+      eyes,
+      videoElement
+    });
 
-    //     // Para cada rostro registrado en camara se dibuja el canvas junto con el nombre del rostro reconocido 
-    //     results.forEach( (result, i) => {
-    //         const box = resizedDetections[i].detection.box
-    //         const drawBox = new faceapi.draw.DrawBox(box, { label: result.toString() })
-    //         drawBox.draw(canvas)
-    //     })
-    // }, 500)
-
-  }
+  };
 }
+
+

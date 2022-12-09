@@ -2,21 +2,9 @@
 
   <div class="header">
 
-    <!-- <div class="in-header">
-
-      icon
-
-    </div> -->
-
     <div class="title">
       Reconocimiento Facial
     </div>
-
-    <!-- <div>
-      <a href="https//github.com/leifermendez">
-        icon
-      </a>
-    </div> -->
 
   </div>
 
@@ -33,12 +21,20 @@
       <div class="zone-body">
 
         <div class="block">
-          block 1
+          <div><b>Estado de animo</b></div>
+          <div class="block-expressions">
+            <div *ngFor="let exp of listaExpresiones" >
+              <span>{{ exp.name }}:</span> <span class="value-number">{{ exp.value | number }}</span>
+            </div>
+          </div>
         </div>
 
         <div class="block">
-          block 2
+          <div>Puntos de referencia</div>
+          <div class="canvas-preview"></div>
+
         </div>
+
       </div>
 
       <div class="zone-btn">

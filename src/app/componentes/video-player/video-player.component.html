@@ -1,3 +1,11 @@
-<div *ngIf="modelsReady" >
+<div *ngIf="modelsReady">
     <video #videoElement (loadedmetadata)="loadedMetaData()" *ngIf="stream" [srcObject]="stream" [style.width]="width + 'px'" [style.height]="height + 'px'"></video>
+
+    <button id="readBtn" (click)="readDatos()" style="cursor: pointer;">Leer</button>
+</div>
+
+<div *ngIf="!modelsReady" >
+
+    Cargando modelos...
+
 </div>
